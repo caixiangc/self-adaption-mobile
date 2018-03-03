@@ -16,6 +16,14 @@ cd JDFinance
 npm install
 ```
 
+### 项目完成后上线打包
+
+```shell
+cd JDFinance
+npm run build
+```
+会出现disk 目录，下面有3个文件 html js css
+
 ### 切换分支
 
 项目里使用git分支来管理不同章节的代码，根据自己的情况选择不同的分支进行开发。
