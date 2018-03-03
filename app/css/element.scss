@@ -1,0 +1,37 @@
+@import "./layout.scss";
+@import "./px2rem.scss";
+
+@mixin btn($size:14px,$color:#fff,$bgcolor:#F04752,$padding:5px,$radius:5px) {//这里$size:14px 就是实现定义一个变量给一个默认值,当有参数传进来的时候回替换这个默认值
+  padding: $padding;//这里就是当展示的时候把上面定义的变量赋值给它
+  background-color: $bgcolor;
+  border-radius: $radius;
+  border: 1px solid $bgcolor;
+  font-size: $size;
+  color: $color;
+  text-align: center;
+  line-height: 1;
+  display: inline-block;
+}
+
+@mixin list($direction:column) {
+  @include flex($direction); //就是把 column 这个变量传到list 这个方法里面
+}
+
+@mixin panel($bgcolor:#fff,$padding:0,$margin:20px 0,$height:112px,$txtPadding:0 32px,$color:#333,$fontSize:px2rem(16)) {
+  background: $bgcolor;
+  padding: $padding;
+  margin: $margin;
+
+  >h4{//给标题加样式
+    height: $height;
+    line-height: $height;
+    padding: $txtPadding;
+    text-overflow: ellipsis;//当字数过多显示 ...
+    white-space: nowrap;//禁止换行
+    overflow: hidden;
+    text-align: center;
+    color: $color;
+    font-size: $fontSize;
+    font-weight: 700; // font-weight不用 px2rem()只有是带px 的才需要px2rem()
+  }
+}

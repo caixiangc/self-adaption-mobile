@@ -1,0 +1,9 @@
+// flex 布局
+//通过mixin 可以实现模块化继承的思想
+@charset "UTF-8";
+
+@mixin flex($direction:column,$inline:block) {//可重用的代码块，称为mixin：,如果不写默认是纵向的
+  display: if($inline==block,flex,inline-flex);//如果$inline等于block，那么flex 否者是 inline-flex
+  flex-direction: $direction;   //显示按行 排
+  flex-wrap: wrap;
+}

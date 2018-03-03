@@ -24,9 +24,7 @@ module.exports = env => {
     )
   }
   return {
-    entry: {
-      app: './app/js/main.js'
-    },
+    entry: ['./app/js/viewport.js','./app/js/main.js'], //如果有多个需要打包的js 文件那么就写成一个数组的形式
     devServer: {
       contentBase: './dist',
       hot: true,

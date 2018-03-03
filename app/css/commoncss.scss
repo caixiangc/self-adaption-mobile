@@ -1,0 +1,12 @@
+@mixin textnowrap($whitespace:nowrap,$textoverflow:ellipsis,$overflow:hidden) {
+  white-space: $whitespace;
+  text-overflow: $textoverflow;
+  overflow: $overflow;
+}
+
+@mixin juph($bool:true){
+  display: if($bool==false,none,block);
+  &:first-child{
+    display: none;
+  }
+}

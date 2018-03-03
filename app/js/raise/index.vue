@@ -2,12 +2,13 @@
     <div>
         <Heador/>
         <Slidor/>
-        <Novice/>
-        <Borrows/>
-        <Moneys/>
-        <Product/>
-        <Life/>
-        <Footer/>
+        <Signs/>
+        <In/>
+        <Inone/>
+        <Intwo/>
+        <Morewealfare/>
+        
+        <Footer bools="false"/>
         <Navbar/>
     </div>
 </template>
@@ -16,25 +17,24 @@
 import Heador from "../public/header.vue" // 因为禁止使用Header默认的，所以我们用Heador 代替 Header
 import Footer from "../public/footer.vue"
 import Navbar from "../public/navbar.vue"
-
-import Slidor from "./hslider.vue"
-import Novice from "./novice.vue"
-import Borrows from "./borrow.vue"
-import Moneys from "./money.vue"
-import Product from "./product.vue"
-import Life from "./life.vue"
+import Slidor from "./rslider.vue"
+import Signs from "./signs.vue"
+import In from "./in.vue"
+import Inone from "./inone.vue"
+import Intwo from "./intwo.vue"
+import Morewealfare from "./morewealfare.vue"
 
 export default {
     components: {
         Heador,
         Slidor,
-        Novice,
-        Borrows,
-        Moneys,
-        Product,
-        Life,
         Footer,
         Navbar,
+        Signs,
+        In,
+        Inone,
+        Intwo,
+        Morewealfare,
     },
 }
 </script>
