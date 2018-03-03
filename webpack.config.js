@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = env => {
   if (!env) {
     env = {}
@@ -20,11 +21,15 @@ module.exports = env => {
           NODE_ENV: '"production"'
         }
       }),
-      new ExtractTextPlugin("style.css", {ignoreOrder: true})
+      new ExtractTextPlugin("style.css", {ignoreOrder: true}),
+      new UglifyJsPlugin({
+        sourceMap: true //如果这里不加true  会把压缩后的代码当 注释
+      })
     )
   }
   return {
     entry: ['./app/js/viewport.js','./app/js/main.js'], //如果有多个需要打包的js 文件那么就写成一个数组的形式
+    devtool: 'source-map',
     devServer: {
       contentBase: './dist',
       hot: true,
@@ -47,10 +52,10 @@ module.exports = env => {
               camelCase: true
             },
             extractCSS: true,
-            loaders: env.production?{
-              css: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8', fallback: 'vue-style-loader'}),
-              scss: ExtractTextPlugin.extract({use: 'css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader', fallback: 'vue-style-loader'})
-            }:{
+            loaders: env.production?{ //这个是生产环境
+              css: ExtractTextPlugin.extract({use: 'css-loader?minimize!px2rem-loader?remUnit=40&remPrecision=8', fallback: 'vue-style-loader'}),
+              scss: ExtractTextPlugin.extract({use: 'css-loader?minimize!px2rem-loader?remUnit=40&remPrecision=8!sass-loader', fallback: 'vue-style-loader'})
+            }:{ //这个是开发环境
               css: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8',
               scss: 'vue-style-loader!css-loader!px2rem-loader?remUnit=40&remPrecision=8!sass-loader'
             }
